@@ -24,8 +24,8 @@
 
 		<ul class="pa0 list">
 			{{ range . }}
-			<li  class="mb2">
-				<a href="{{ .RelPermalink }}">{{- .Title -}}</a>
+			<li class="mb2">
+				<a href="{{ .RelPermalink }}" class="link">{{- .Title -}}</a>
 			</li>
 			{{ end }}
 		</ul>

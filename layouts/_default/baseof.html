@@ -46,8 +46,8 @@
 		{{ block "head" . }}{{ partial "head-additions.html" . }}{{ end }}
 
 		<style>
-		a { color: {{ .Site.Params.link_color | default "blue" }}; }
-		a:hover { color: {{ .Site.Params.link_color | default "darkblue" }}; }
+		a { color: {{ .Site.Params.link_color | default "blue" | safeCSS }}; }
+		a:hover { color: {{ .Site.Params.link_hover | default "darkblue" | safeCSS }}; }
 		</style>
 	</head>
 

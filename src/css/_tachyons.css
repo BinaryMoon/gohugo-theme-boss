@@ -78,7 +78,7 @@
 @import 'tachyons/src/_vertical-align';
 @import 'tachyons/src/_hovers';
 @import 'tachyons/src/_z-index';
-@import 'tachyons/src/_nested';
+/* @import 'tachyons/src/_nested'; */
 @import 'tachyons/src/_styles';
 
 /* Variables */

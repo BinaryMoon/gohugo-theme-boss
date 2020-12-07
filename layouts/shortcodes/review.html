@@ -1,0 +1,18 @@
+<section class="pa3 bg-black-10 mv5">
+
+	{{ with .Get "rating" }}
+	<div class="fr pa3 mb2 ml4 {{ $.Site.Params.feature_colors | default "bg-green hover-bg-green white hover-white" }}">
+		<small class="db ttu tracked-mega f7 tc">Rating</small>
+		<strong class="db f3 tc">{{.}}</strong>
+	</div>
+	{{ end }}
+
+	<h3 class="mt0">{{ $.Page.Title }}</h3>
+
+	<ul>
+		{{ with .Get "website" }}<li><a href="{{.}}">Website</a></li>{{ end }}
+		{{ with .Get "address" }}<li><em>Address:</em> {{.}}</li>{{ end }}
+		{{ with .Get "phone" }}<li><em>Phone number:</em> {{.}}</li>{{ end }}
+	</ul>
+
+</section>

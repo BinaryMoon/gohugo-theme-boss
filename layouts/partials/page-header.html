@@ -1,11 +1,10 @@
 {{ $featured_image := partial "func/GetFeaturedImage.html" . }}
 {{ if $featured_image }}
 
-	{{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
 	{{ $featured_image := (trim $featured_image "/") }}
 	{{ $image := resources.Get $featured_image }}
 	{{ $image := $image.Fill "600x400 Gaussian" }}
-	{{ $image = $image.Filter (images.GaussianBlur 4) (images.Grayscale) }}
+	{{ $image := $image.Filter (images.GaussianBlur 2) (images.Grayscale) }}
 	<header class="cover bg-center" style="background-image: url('{{ $image.RelPermalink }}');">
 
 		<div class="pb3-m pb6-l {{ .Site.Params.cover_dimming_class | default "bg-black-60" }}">

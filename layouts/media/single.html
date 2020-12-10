@@ -1,0 +1,50 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
+{{ define "main" }}
+	<div class="mt2 mw8 center">
+
+		<article class="center cf pv5 ph3 ph4-ns mw7">
+
+			<header>
+
+				<p class="f6 b tracked">
+					{{ humanize .Section | upper  }}
+				</p>
+
+				<h1 class="f1">
+					{{ .Title }}
+				</h1>
+
+			</header>
+
+			<div class="nested-copy-line-height lh-copy {{ .Site.Params.font_content | default "georgia" }} f4 nested-links nested-img mid-gray">
+
+				{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+				{{ if $featured_image }}
+
+					{{ $featured_image := (trim $featured_image "/") }}
+					{{ $image_obj := resources.Get $featured_image }}
+					{{ $image_obj := $image_obj.Resize "700x" }}
+
+				<figure class="image ma0 mb3 {{ $.Scratch.Get "class" }}">
+					<img
+						loading="lazy"
+						src="{{ $image_obj.RelPermalink }}"
+						alt="{{ .Page.Title }}"
+					/>
+					{{ with .Page.Description }}
+					<figcaption>
+						<h4 class="tc f4 mh0 mv2">{{ $.Page.Title }}: {{ . }}</h4>
+					</figcaption>
+					{{ end }}
+				</figure>
+
+				{{ end }}
+
+				{{- .Content -}}
+			</div>
+
+		</article>
+
+	</div>
+
+{{ end }}

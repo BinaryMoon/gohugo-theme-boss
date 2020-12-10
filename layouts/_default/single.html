@@ -41,10 +41,12 @@
 				{{ partial "social-share.html" . }}
 			</aside>
 
+			{{ if .Params.tags }}
 			<aside class="instapaper_ignoref tracked mt5">
 				<h5 class="b">Tags</h5>
 				{{- partial "tags.html" . -}}
 			</aside>
+			{{ end }}
 
 		</div>
 

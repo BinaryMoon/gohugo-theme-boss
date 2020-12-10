@@ -1,15 +1,15 @@
-<section class="pa3 bg-black-10 mv5">
+<section class="pa4 bg-black-10 mv5">
 
 	{{ with .Get "rating" }}
-	<div class="fr pa3 mb2 ml4 {{ $.Site.Params.feature_colors | default "bg-green hover-bg-green white hover-white" }}">
+	<div class="fr pa3 mb2 ml4 {{ $.Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }}">
 		<small class="db ttu tracked-mega f7 tc">Rating</small>
 		<strong class="db f3 tc">{{.}}</strong>
 	</div>
 	{{ end }}
 
-	<h3 class="mt0">{{ $.Page.Title }}</h3>
+	<h3 class="mt0 lh-solid {{ $.Site.Params.font_body | default "avenir" }} black">{{ $.Page.Title }}</h3>
 
-	<ul>
+	<ul class="mb0">
 		{{ with .Get "website" }}<li><a href="{{.}}">Website</a></li>{{ end }}
 		{{ with .Get "address" }}<li><em>Address:</em> {{.}}</li>{{ end }}
 		{{ with .Get "phone" }}<li><em>Phone number:</em> {{.}}</li>{{ end }}

@@ -1,0 +1,30 @@
+{{ $category := .Get "category" | urlize }}
+{{ $columns := .Get "columns" | default "2" }}
+
+{{ with ( $.Site.GetPage ( printf "/gallery/%s" $category ) ) }}
+<div class="grid grid-c{{$columns}} grid-gg2 mv5">
+	{{ range .Pages }}
+		{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+		{{ if $featured_image }}
+
+			{{ $featured_image := (trim $featured_image "/") }}
+			{{ $image_obj := resources.Get $featured_image }}
+			{{ $image_obj := $image_obj.Fill "400x400" }}
+
+	<figure class="image ma0 {{ $.Scratch.Get "class" }}">
+		<a href="{{ .Page.Permalink }}">
+			<img
+				loading="lazy"
+				src="{{ $image_obj.RelPermalink }}"
+				alt="{{ .Page.Title }}"
+			/>
+		</a>
+		<figcaption>
+			<h3 class="tc f5 mh0 mt2 mb0">{{ .Page.Title }}</h3>
+			<p class="tc f7 mh0 mv0">{{ .Page.Description }}</p>
+		</figcaption>
+	</figure>
+		{{ end }}
+	{{ end }}
+</div>
+{{ end }}

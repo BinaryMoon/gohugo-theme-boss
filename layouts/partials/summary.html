@@ -1,19 +1,35 @@
-<div class="relative w-100 w-30-l mb4 bg-white nested-copy-line-height">
+{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+<div class="relative w-100 mid-gray bg-white bb b--black-10 pa4 nested-copy-line-height">
 
-	<div class="bg-white-50 mb3 pa4 mid-gray overflow-hidden">
+	{{ if $featured_image }}
+		{{ $featured_image := (trim $featured_image "/") }}
+		{{ $image := resources.Get $featured_image }}
+		{{ if $image }}
+			{{ $image := $image.Fill "600x400" }}
+			<div class="mb3 w-100">
+				<a href="{{.Permalink}}" class="db">
+					<img src="{{ $image.RelPermalink }}" class="img" alt="image from {{ .Title }}">
+				</a>
+			</div>
+		{{ end }}
+	{{ end }}
 
-		<span class="f6 db">{{ humanize .Section }}</span>
+	<h1 class="f3 mb1 mt0">
+		<a href="{{ .Permalink }}" class="link black">{{ .Title }}</a>
+	</h1>
 
-		<h1 class="f3">
-			<a href="{{ .Permalink }}" class="link black">
-				{{ .Title }}
-			</a>
-		</h1>
+	{{ if .Date }}
+	<time class="dib mb3 f7 ttu tracked" {{ printf `datetime="%s"` (.Date.Format "2006-01-02T15:04:05Z07:00") | safeHTMLAttr }}>
+		{{- .Date.Format "January 2, 2006" -}}
+	</time>
+	{{ end }}
 
-		<div class="nested-links f5 {{ .Site.Params.font_content | default "georgia" }} lh-copy nested-copy-line-height">
-			{{ .Summary | truncate 360 }}
-		</div>
-
+	<div class="nested-links f5 {{ .Site.Params.font_content | default "georgia" }} lh-copy nested-copy-line-height">
+		{{ .Summary | truncate 350 }}
 	</div>
+
+	<a href="{{.Permalink}}" class="br2 fw7 dib f7 link mt3 ttu tracked-mega">
+		{{ $.Param "read_more_copy" | default (i18n "readMore") }}
+	</a>
 
 </div>

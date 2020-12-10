@@ -1,39 +1,36 @@
 {{ $featured_image := partial "func/GetFeaturedImage.html" . }}
-<article class="bb b--black-10">
+<article class="bb b--black-10 mid-gray bg-white pa4 flex flex-column flex-row-ns mb4">
 
-	<div class="db pb4 ph3 ph0-l no-underline dark-gray">
-		<div class="flex flex-column flex-row-ns">
-
-			{{ if $featured_image }}
-				{{ $featured_image := (trim $featured_image "/") }}
-				{{ $image := resources.Get $featured_image }}
-				{{ if $image }}
-					{{ $image := $image.Fill "600x400" }}
-					<div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-						<a href="{{.Permalink}}" class="db">
-							<img src="{{ $image.RelPermalink }}" class="img" alt="image from {{ .Title }}">
-						</a>
-					</div>
-				{{ end }}
-			{{ end }}
-
-			<div class="blah w-100{{ if $featured_image }} w-60-ns pl3-ns{{ end }}">
-
-				<h1 class="f3 mt0 lh-title">
-					<a href="{{.Permalink}}" class="color-inherit link">{{ .Title }}</a>
-				</h1>
-
-				<div class="f6 f5-l lh-copy nested-copy-line-height nested-links {{ .Site.Params.font_content | default "georgia" }}">
-					{{ .Summary }}
-				</div>
-
-				<a href="{{.Permalink}}" class="bg-white br2 color-inherit dib f7 hover-bg-light-gray link mt2 ph3 pv2 ttu tracked-mega">
-					{{ $.Param "read_more_copy" | default (i18n "readMore") }}
+	{{ if $featured_image }}
+		{{ $featured_image := (trim $featured_image "/") }}
+		{{ $image := resources.Get $featured_image }}
+		{{ if $image }}
+			{{ $image := $image.Fill "600x400" }}
+			<div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+				<a href="{{.Permalink}}" class="db">
+					<img src="{{ $image.RelPermalink }}" class="img" alt="image from {{ .Title }}">
 				</a>
-
 			</div>
+		{{ end }}
+	{{ end }}
 
+	<div class="w-100 {{ if $featured_image }}w-60-ns pl3-ns{{ end }}">
+
+		<h1 class="f3 mt0 mb1">
+			<a href="{{.Permalink}}" class="black link">{{ .Title }}</a>
+		</h1>
+
+		<time class="dib mb3 f7 ttu tracked" {{ printf `datetime="%s"` (.Date.Format "2006-01-02T15:04:05Z07:00") | safeHTMLAttr }}>
+			{{- .Date.Format "January 2, 2006" -}}
+		</time>
+
+		<div class="f6 f5-l lh-copy nested-copy-line-height nested-links {{ .Site.Params.font_content | default "georgia" }}">
+			{{ .Summary | truncate 350 }}
 		</div>
+
+		<a href="{{.Permalink}}" class="br2 fw7 dib f7 link mt3 ttu tracked-mega">
+			{{ $.Param "read_more_copy" | default (i18n "readMore") }}
+		</a>
 
 	</div>
 

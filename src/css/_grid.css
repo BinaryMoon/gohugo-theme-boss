@@ -1,0 +1,7 @@
+.grid {	display: grid; }
+
+.grid-gg1 { grid-gap: 1rem;	}
+.grid-gg2 { grid-gap: 2rem;	}
+
+.grid-c2 { grid-template-columns: 1fr 1fr; }
+.grid-c3 { grid-template-columns: 1fr 1fr 1fr; }

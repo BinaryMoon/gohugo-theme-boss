@@ -1,0 +1,15 @@
+{{ range $.Site.Params.category_summaries }}
+	{{ $category := . | urlize }}
+	{{ with ( $.Site.GetPage ( printf "/categories/%s" $category ) ) }}
+	<div class="mb4">
+		<h2 class="lh-2 mv3">
+			<a href="{{ .Permalink }}" class="link black">{{ .Title }}</a>
+		</h2>
+		<ul class="bg-white bb b--black-10 pa4 pb1 ma0 list">
+		{{ range first 4 .Pages }}
+			{{ partial "summary-mini.html" . }}
+		{{ end }}
+		</ul>
+	</div>
+	{{ end }}
+{{ end }}

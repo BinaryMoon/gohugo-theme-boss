@@ -1,27 +1,24 @@
 {{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
-	<div class="flex-l mt2 mw8 center">
 
-		<article class="center cf pv5 ph3 ph4-ns mw7">
+	<article class="center cf pv5 ph3 ph4-ns mw7">
 
-			<header>
+		<header>
 
-				<p class="f6 b tracked">
-					{{ humanize .Section | upper  }}
-				</p>
+			<p class="f6 b tracked">
+				{{ humanize .Section | upper  }}
+			</p>
 
-				<h1 class="f1">
-					{{ .Title }}
-				</h1>
+			<h1 class="f1">
+				{{ .Title }}
+			</h1>
 
-			</header>
+		</header>
 
-			<div class="nested-copy-line-height lh-copy {{ .Site.Params.font_content | default "georgia" }} f4 nested-links nested-img mid-gray">
-				{{- .Content -}}
-			</div>
+		<div class="lh-copy {{ .Site.Params.font_content | default "georgia" }} f4 nested-links nested-img mid-gray bg-white pa4">
+			{{- .Content -}}
+		</div>
 
-		</article>
-
-	</div>
+	</article>
 
 {{ end }}

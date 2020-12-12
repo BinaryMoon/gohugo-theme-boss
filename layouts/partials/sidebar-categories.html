@@ -1,15 +1,21 @@
 {{ range $.Site.Params.category_summaries }}
 	{{ $category := . | urlize }}
 	{{ with ( $.Site.GetPage ( printf "/categories/%s" $category ) ) }}
-	<div class="mb4">
-		<h2 class="lh-2 mv3">
-			<a href="{{ .Permalink }}" class="link black">{{ .Title }}</a>
-		</h2>
-		<ul class="bg-white bb b--black-10 pa4 pb1 ma0 list">
+	<aside class="mb5">
+
+		<h3 class="mv3 f3 lh-2">
+			<a href="{{ .Permalink }}" class="link">
+				<span class="black">{{ .Title }}</span>
+				<small class="fr br2 fw7 f7 ttu tracked-mega">View All &rsaquo;</small>
+			</a>
+		</h3>
+
+		<div class="pa0 ma0 list">
 		{{ range first 4 .Pages }}
 			{{ partial "summary-mini.html" . }}
 		{{ end }}
-		</ul>
-	</div>
+		</div>
+
+	</aside>
 	{{ end }}
 {{ end }}

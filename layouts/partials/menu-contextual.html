@@ -18,16 +18,15 @@
 <!-- Related Posts -->
 {{ $related := .Site.RegularPages.Related . | first 15 }}
 {{ with $related }}
-	<div class="bg-black-10 pa3 nested-list-reset nested-copy-line-height nested-links">
+	<aside class="mb5">
 
-		<p class="f5 b mb3">{{ i18n "related" }}</p>
+		<h3 class="f3 mv3">{{ i18n "related" }}</h3>
 
-		<ul class="pa0 list">
-			{{ range . }}
-			<li class="mb3">
-				<a href="{{ .RelPermalink }}" class="link">{{- .Title -}}</a>
-			</li>
-			{{ end }}
-		</ul>
-	</div>
+		<div class="pa0 ma0 list">
+		{{ range . }}
+			{{ partial "summary-mini.html" . }}
+		{{ end }}
+		</div>
+
+	</aside>
 {{ end }}

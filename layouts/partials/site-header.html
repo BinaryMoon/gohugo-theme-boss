@@ -4,11 +4,11 @@
 	{{ $featured_image := (trim $featured_image "/") }}
 	{{ $image := resources.Get $featured_image }}
 	{{ $image := $image.Fill "700x400 Gaussian" }}
-	{{ $image := $image.Filter (images.GaussianBlur 2) (images.Grayscale) }}
+	{{ $image := $image.Filter (images.GaussianBlur 2) }}
 
 	<header class="{{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }} cover bg-center" style="background-image: url('{{ $image.RelPermalink }}');">
 
-		<div class="{{ .Site.Params.cover_dimming_class | default "bg-black-60" }}">
+		<div class="{{ .Site.Params.cover_dimming_class | default "bg-black-50" }}">
 
 {{ else }}
 
@@ -20,7 +20,7 @@
 
 			{{ partial "site-navigation.html" .}}
 
-			<div class="tc-l pt0 pb5 pt4-l pb6-l ph3 ph4-ns {{ .Site.Params.cover_text_color | default "white" }}">
+			<div class="tc-l pt0 pb5 pt4-l pb6-l ph3 ph4-ns {{ .Site.Params.cover_text_color | default "white" }} mw8 center">
 
 				<h1 class="f2 f-subheadline-l fw9 mb0 lh-title">
 					{{ .Title | default .Site.Title | title }}

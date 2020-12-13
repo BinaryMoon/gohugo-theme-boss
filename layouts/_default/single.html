@@ -18,13 +18,10 @@
 			</p>
 			{{ end }}
 
-			{{ $featured_image := .Param "featured_image"}}
-			{{ if or (.Params.omit_header_text) (not $featured_image) }}
 			<h1 class="f1 mt3 mb1">
 				{{- .Title -}}
 			</h1>
 			{{ partial "meta.html" . }}
-			{{ end }}
 
 			{{/*
 				Show "reading time" and "word count" but only if one of the following are true:

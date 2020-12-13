@@ -11,8 +11,8 @@
 
 	<ul class="mb0">
 		{{ with .Get "website" }}<li><a href="{{.}}">Website</a></li>{{ end }}
-		{{ with .Get "address" }}<li><em>Address:</em> {{.}}</li>{{ end }}
-		{{ with .Get "phone" }}<li><em>Phone number:</em> {{.}}</li>{{ end }}
+		{{ with .Get "address" }}<li><em>Address:</em> <a href="https://duckduckgo.com/?q={{ safeHTMLAttr ( replace . ' ' '+' ) }}&ia=web&iaxm=places">{{.}}</a></li>{{ end }}
+		{{ with .Get "phone" }}<li><em>Phone number:</em> <a href="tel:{{ urlize . }}">{{.}}</a></li>{{ end }}
 	</ul>
 
 </section>

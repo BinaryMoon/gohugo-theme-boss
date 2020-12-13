@@ -1,20 +1,22 @@
 {{ $image := .Get "src" }}
 {{ $image := (trim $image "/") }}
 {{ $image_obj := resources.Get $image }}
-{{ $.Scratch.Add "image" ( $image_obj.Resize "700x" ) }}
 
-{{ $.Scratch.Add "class" "" }}
-{{ $align := .Get "align" }}
-{{ if ( eq $align "left" ) }}
-{{ $.Scratch.Set "class" "w-40 fl mr4" }}
-{{ $.Scratch.Set "image" ( $image_obj.Resize "400x" ) }}
-{{ end }}
-{{ if ( eq $align "right" ) }}
-{{ $.Scratch.Set "class" "w-40 fr ml4" }}
-{{ $.Scratch.Set "image" ( $image_obj.Resize "400x" ) }}
-{{ end }}
+{{ if $image_obj }}
+	{{ $.Scratch.Add "image" ( $image_obj.Resize "700x" ) }}
 
-{{ $image_obj := $.Scratch.Get "image" }}
+	{{ $.Scratch.Add "class" "" }}
+	{{ $align := .Get "align" }}
+	{{ if ( eq $align "left" ) }}
+		{{ $.Scratch.Set "class" "w-40 fl mr4" }}
+		{{ $.Scratch.Set "image" ( $image_obj.Resize "400x" ) }}
+	{{ end }}
+	{{ if ( eq $align "right" ) }}
+		{{ $.Scratch.Set "class" "w-40 fr ml4" }}
+		{{ $.Scratch.Set "image" ( $image_obj.Resize "400x" ) }}
+	{{ end }}
+
+	{{ $image_obj := $.Scratch.Get "image" }}
 
 <figure class="image ma0 mb3 {{ $.Scratch.Get "class" }}">
 	<img
@@ -28,3 +30,5 @@
 	</figcaption>
 	{{ end }}
 </figure>
+
+{{ end }}

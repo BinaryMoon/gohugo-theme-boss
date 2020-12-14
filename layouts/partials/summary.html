@@ -1,5 +1,5 @@
 {{ $featured_image := partial "func/GetFeaturedImage.html" . }}
-<div class="relative w-100 mid-gray bg-white bb b--black-10 pa4 nested-copy-line-height">
+<div class="relative w-100 mid-gray bg-white pa4 nested-copy-line-height">
 
 	{{ if $featured_image }}
 		{{ $featured_image := (trim $featured_image "/") }}

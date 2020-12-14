@@ -1,5 +1,5 @@
 {{ $featured_image := partial "func/GetFeaturedImage.html" . }}
-<article class="bb b--black-10 mid-gray bg-white pa4 flex flex-column flex-row-ns">
+<article class="mid-gray bg-white pa4 flex flex-column flex-row-ns">
 
 	{{ if $featured_image }}
 		{{ $featured_image := (trim $featured_image "/") }}

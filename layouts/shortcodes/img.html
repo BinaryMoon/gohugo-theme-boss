@@ -4,21 +4,24 @@
 
 {{ if $image_obj }}
 	{{ $.Scratch.Add "image" ( $image_obj.Resize "700x" ) }}
+	{{ $.Scratch.Add "heading_class" "f5 mv2" }}
+	{{ $.Scratch.Add "class" "mb4" }}
 
-	{{ $.Scratch.Add "class" "" }}
 	{{ $align := .Get "align" }}
 	{{ if ( eq $align "left" ) }}
-		{{ $.Scratch.Set "class" "w-40 fl mr4" }}
+		{{ $.Scratch.Set "class" "w-40 fl mr4 mb3" }}
 		{{ $.Scratch.Set "image" ( $image_obj.Resize "400x" ) }}
+		{{ $.Scratch.Set "heading_class" "f7 mv1" }}
 	{{ end }}
 	{{ if ( eq $align "right" ) }}
-		{{ $.Scratch.Set "class" "w-40 fr ml4" }}
+		{{ $.Scratch.Set "class" "w-40 fr ml4 mb3" }}
 		{{ $.Scratch.Set "image" ( $image_obj.Resize "400x" ) }}
+		{{ $.Scratch.Set "heading_class" "f7 mv1" }}
 	{{ end }}
 
 	{{ $image_obj := $.Scratch.Get "image" }}
 
-<figure class="image ma0 mb3 {{ $.Scratch.Get "class" }}">
+<figure class="image ma0 {{ $.Scratch.Get "class" }}">
 	<img
 		loading="lazy"
 		src="{{ $image_obj.RelPermalink }}"
@@ -26,7 +29,7 @@
 	/>
 	{{ if .Inner }}
 	<figcaption>
-		<h4 class="tc f7 mh0 mv1">{{.Inner}}</h4>
+		<h4 class="tc mh0 {{ $.Scratch.Get "heading_class" }}">{{.Inner}}</h4>
 	</figcaption>
 	{{ end }}
 </figure>

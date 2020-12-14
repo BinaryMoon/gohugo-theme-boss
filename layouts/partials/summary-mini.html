@@ -17,12 +17,14 @@
 	<div class="w-100 {{ if $featured_image }}w-80-ns pl3-ns{{ end }}">
 
 		<h1 class="f5 mt0 mb1">
-			<a href="{{.Permalink}}" class="black link">{{ .Title }}</a>
+			<a href="{{.Permalink}}" class="black link">{{ .Title | title }}</a>
 		</h1>
 
+		{{ if .Date }}
 		<time class="dib f7 ttu tracked" {{ printf `datetime="%s"` (.Date.Format "2006-01-02T15:04:05Z07:00") | safeHTMLAttr }}>
 			{{- .Date.Format "January 2, 2006" -}}
 		</time>
+		{{ end }}
 
 	</div>
 

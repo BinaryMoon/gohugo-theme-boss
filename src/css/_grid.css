@@ -1,7 +1,19 @@
-.grid {	display: grid; }
+@media (--breakpoint-large) {
 
+	.grid {	display: grid; }
+
+}
+
+.grid-gg1px { grid-gap: 1px; }
+.grid-gg2px { grid-gap: 2px; }
 .grid-gg1 { grid-gap: 1rem;	}
 .grid-gg2 { grid-gap: 2rem;	}
 
 .grid-c2 { grid-template-columns: 1fr 1fr; }
 .grid-c3 { grid-template-columns: 1fr 1fr 1fr; }
+
+@media (--breakpoint-medium) {
+
+	.grid-c3 { grid-template-columns: 1fr 1fr; }
+
+}

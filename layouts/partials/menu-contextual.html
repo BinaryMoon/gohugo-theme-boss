@@ -4,9 +4,12 @@
 */}}
 
 {{- if .Params.toc -}}
-	<div class="bg-black-10 pa3 nested-list-reset nested-copy-line-height nested-links">
-		<p class="f5 b mb3">{{ i18n "whatsInThis" . }}</p>
+	<div class="mb5">
+
+		<h3 class="f3 mv3">{{ i18n "whatsInThis" }}</h3>
+
 		{{ .TableOfContents }}
+
 	</div>
 {{- end -}}
 
@@ -16,14 +19,15 @@
 */}}
 
 <!-- Related Posts -->
-{{ $related := .Site.RegularPages.Related . | first 15 }}
+{{ $related := .Site.RegularPages.Related . }}
+{{ $related := shuffle $related }}
 {{ with $related }}
 	<aside class="mb5">
 
 		<h3 class="f3 mv3">{{ i18n "related" }}</h3>
 
 		<div class="pa0 ma0 list">
-		{{ range . }}
+		{{ range first 5 . }}
 			{{ partial "summary-mini.html" . }}
 		{{ end }}
 		</div>

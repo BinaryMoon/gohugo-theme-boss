@@ -23,7 +23,7 @@
 			</h1>
 
 			{{ with .Params.description }}
-			<p class="f3 mb4">{{ . }}</p>
+			<p class="f3 mb4 mw7 lh-copy">{{ . }}</p>
 			{{ end }}
 
 		</header>
@@ -41,11 +41,6 @@
 				{{ partial "amazon-links.html" . }}
 
 			</div>
-
-			<aside class="instapaper_ignoref tracked mt5">
-				<h5 class="b">Share</h5>
-				{{ partial "social-share.html" . }}
-			</aside>
 
 			{{ if .Params.tags }}
 			<aside class="instapaper_ignoref tracked mt5">

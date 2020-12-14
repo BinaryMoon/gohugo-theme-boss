@@ -1,0 +1,38 @@
+<form class="flex flex-wrap flex-grow items-stretch" id="search" action="https://duckduckgo.com/">
+	<label for="search-query" class="w-100 fw7 ttu f6 tracked">Search</label>
+	<input
+		class="pa2 flex-grow lh2"
+		type="search"
+		id="search-query"
+		name="search-query"
+		placeholder="veggie sausages"
+		autofocus
+	/>
+	<input
+		class="{{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }} bn ph3 pv2 br3 br--right lh2"
+		type="submit"
+	/>
+	<input
+		type="hidden"
+		id="q"
+		name="q"
+	/>
+	<span class="f7 w-100 tr mt2 tracked">Powered by DuckDuckGo</span>
+</form>
+
+<script>
+	var search = document.getElementById( 'search' );
+	var q = document.getElementById( 'q' );
+	var search_query = document.getElementById( 'search-query' );
+
+	search.addEventListener(
+		'submit',
+		function( e ) {
+			q.value = 'site:veggieadvisor.com ' + search_query.value;
+			// // alert(q.value);
+			// console.log(q.value);
+			// e.preventDefault();
+		}
+	);
+
+</script>

@@ -3,7 +3,7 @@
 
 {{ if $link }}
 <p class="mv5 grid grid-c2 grid-gg1">
-	<a href="https://amazon.com/{{ $link }}" class="{{ $classes }} {{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }}">Get on Amazon UK</a>
-	<a href="https://amazon.com/{{ $link }}" class="{{ $classes }} {{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }}">Get on Amazon US</a>
+	<a href="https://amazon.co.uk/dp/{{ $link }}/" class="{{ $classes }} {{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }}">Get on Amazon UK</a>
+	<a href="https://amazon.com/dp/{{ $link }}/" class="{{ $classes }} {{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }}">Get on Amazon US</a>
 </p>
 {{ end }}

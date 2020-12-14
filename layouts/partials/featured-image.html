@@ -1,0 +1,21 @@
+{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+{{ if $featured_image }}
+
+	{{ $featured_image := (trim $featured_image "/") }}
+	{{ $image_obj := resources.Get $featured_image }}
+	{{ $image_obj := $image_obj.Resize "700x" }}
+
+<figure class="image ma0 mb4 {{ $.Scratch.Get "class" }}">
+	<img
+		loading="lazy"
+		src="{{ $image_obj.RelPermalink }}"
+		alt="{{ .Page.Title }}"
+	/>
+	{{ with .Page.Description }}
+	<figcaption>
+		<h4 class="tc f4 mh0 mv2">{{ $.Page.Title }}: {{ . }}</h4>
+	</figcaption>
+	{{ end }}
+</figure>
+
+{{ end }}

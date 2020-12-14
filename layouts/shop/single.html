@@ -1,0 +1,66 @@
+{{ define "header" }}
+	{{/* We can override any block in the baseof file by defining it in the template */}}
+	{{ partial "page-header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+	{{ $section := .Site.GetPage "section" .Section }}
+	<article class="flex-l flex-wrap justify-between w-80-l center ph4">
+
+		<header class="mt5 mb3 w-100">
+
+			{{ if .Params.shop }}
+			{{ $category := index (.Params.shop) 0 }}
+			<p class="fw7 tracked ttu f7 mb4">
+				<a href="{{ "/shop/" | relLangURL }}{{ $category | urlize }}/">{{ $category }}</a>
+				<span class="o-30 mh1">></span>
+				{{ .Title }}
+			</p>
+			{{ end }}
+
+			<h1 class="f1 mt3 mb1">
+				{{- .Title -}}
+			</h1>
+
+			{{ with .Params.description }}
+			<p class="f3 mb4">{{ . }}</p>
+			{{ end }}
+
+		</header>
+
+		<div class="lh-copy {{ $.Param "post_content_classes" }} f4 nested-links nested-img mid-gray bg-white pa4 w-two-thirds-l">
+
+			<div class="{{ .Site.Params.font_content | default "georgia" }}">
+
+				{{ partial "amazon-links.html" . }}
+
+				{{ partial "featured-image.html" . }}
+
+				{{- .Content -}}
+
+				{{ partial "amazon-links.html" . }}
+
+			</div>
+
+			<aside class="instapaper_ignoref tracked mt5">
+				<h5 class="b">Share</h5>
+				{{ partial "social-share.html" . }}
+			</aside>
+
+			{{ if .Params.tags }}
+			<aside class="instapaper_ignoref tracked mt5">
+				<h5 class="b">Tags</h5>
+				{{- partial "tags.html" . -}}
+			</aside>
+			{{ end }}
+
+		</div>
+
+		<div class="w-third-l mt6-l pl4-l">
+			{{ partial "menu-contextual.html" . }}
+			{{ partial "sidebar.html" . }}
+		</div>
+
+	</article>
+
+{{ end }}

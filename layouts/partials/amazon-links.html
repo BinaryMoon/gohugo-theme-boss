@@ -1,0 +1,9 @@
+{{ $classes := "link f5 ph3 pv3 br3 fw7 tc ttu tracked-mega w-100" }}
+{{ $link := .Params.amazon | default "" }}
+
+{{ if $link }}
+<p class="mv5 grid grid-c2 grid-gg1">
+	<a href="https://amazon.com/{{ $link }}" class="{{ $classes }} {{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }}">Get on Amazon UK</a>
+	<a href="https://amazon.com/{{ $link }}" class="{{ $classes }} {{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }}">Get on Amazon US</a>
+</p>
+{{ end }}

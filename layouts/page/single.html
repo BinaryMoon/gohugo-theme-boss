@@ -6,12 +6,10 @@
 		<header>
 
 			<p class="f6 b tracked">
-				{{ humanize .Section | upper  }}
+				{{ .Section | upper  }}
 			</p>
 
-			<h1 class="f1">
-				{{ .Title }}
-			</h1>
+			<h1 class="f1">{{ .Title | title }}</h1>
 
 		</header>
 

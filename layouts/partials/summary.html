@@ -15,7 +15,7 @@
 	{{ end }}
 
 	<h1 class="f3 mb1 mt0">
-		<a href="{{ .Permalink }}" class="link black">{{ .Title }}</a>
+		<a href="{{ .Permalink }}" class="link black">{{ .Title | title }}</a>
 	</h1>
 
 	{{ if .Date }}

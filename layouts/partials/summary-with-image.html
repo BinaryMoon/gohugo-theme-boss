@@ -17,7 +17,7 @@
 	<div class="w-100 {{ if $featured_image }}w-60-ns pl3-ns{{ end }}">
 
 		<h1 class="f3 mt0 mb1">
-			<a href="{{.Permalink}}" class="black link">{{ .Title }}</a>
+			<a href="{{.Permalink}}" class="black link">{{ .Title | title }}</a>
 		</h1>
 
 		<time class="dib mb3 f7 ttu tracked" {{ printf `datetime="%s"` (.Date.Format "2006-01-02T15:04:05Z07:00") | safeHTMLAttr }}>

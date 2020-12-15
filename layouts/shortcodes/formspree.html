@@ -1,0 +1,48 @@
+{{ if $.Site.Params.formspree_id }}
+{{ $label_class := "db f7 fw7 mb1 ttu tracked" }}
+{{ $wrapper_class := "db mb4" }}
+{{ $input_class := "pa2 mw5 w-100 f5" }}
+<form
+	action="https://formspree.io/f/{{ $.Site.Params.formspree_id }}"
+	method="POST"
+	class="mb4 ba b--silver pa4"
+>
+	<div class="{{ $wrapper_class }}">
+		<label class="{{ $label_class }}" for="message">
+			Your message
+		</label>
+		<textarea name="message" id="message" class="w-100 h4 pa2 m0 db f5"></textarea>
+	</div>
+
+	<div class="{{ $wrapper_class }}">
+		<label class="{{ $label_class }}" for="name">
+			Your name
+		</label>
+		<input
+			type="text"
+			name="name"
+			id="name"
+			placeholder="Jane Smith"
+			class="{{ $input_class }}"
+		>
+	</div>
+
+	<div class="{{ $wrapper_class }}">
+		<label class="{{ $label_class }}" for="reply">
+			Your email
+		</label>
+		<input
+			type="text"
+			name="_replyto"
+			id="reply"
+			placeholder="name@domain.com"
+			class="{{ $input_class }}"
+		>
+	</div>
+
+	<button
+		type="submit"
+		class="{{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }} bn br3 ph4 pv3 ttu tracked f6 fw7 pointer grow"
+	>Send</button>
+</form>
+{{ end }}

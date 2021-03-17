@@ -43,7 +43,9 @@
 		{{- template "_internal/twitter_cards.html" . -}}
 
 		{{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
-			{{ template "_internal/google_analytics_async.html" . }}
+			{{ with .Site.Params.fathomAnalytics }}
+				<script src="https://cdn.usefathom.com/script.js" data-site="{{ . }}" defer></script>
+			{{ end }}
 		{{ end }}
 		{{ block "head" . }}{{ partial "head-additions.html" . }}{{ end }}
 
@@ -63,4 +65,5 @@
 		{{ block "scripts" . }}{{ partialCached "site-scripts.html" . }}{{ end }}
 
 	</body>
+
 </html>

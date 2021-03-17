@@ -1,0 +1,22 @@
+
+{{/*
+	Use Hugo's native related content feature to pull in content that may have similar parameters, like tags. etc.
+	https://gohugo.io/content-management/related/
+*/}}
+
+<!-- Related Posts -->
+{{ $related := .Site.RegularPages.Related . }}
+{{ $related := shuffle $related }}
+{{ with $related }}
+	<aside class="mb5">
+
+		<h3 class="f3 mv3">{{ i18n "related" }}</h3>
+
+		<div class="pa0 ma0 list">
+		{{ range first 5 . }}
+			{{ partial "summary-mini.html" . }}
+		{{ end }}
+		</div>
+
+	</aside>
+{{ end }}

@@ -46,9 +46,14 @@
 
 		{{ if .Site.Params.sidebar_enabled }}
 		<div class="w-100 w-30-l ml4-l">
+
 			{{ if .Site.Params.category_summaries }}
 				{{ partial "sidebar-categories" . }}
 			{{ end }}
+
+			{{ partial "sidebar-store" . }}
+			{{ partial "sidebar.html" . }}
+
 		</div>
 		{{ end }}
 

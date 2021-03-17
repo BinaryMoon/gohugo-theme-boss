@@ -4,13 +4,13 @@
 */}}
 
 {{- if .Params.toc -}}
-	<div class="mb5">
+	<aside class="mb5">
 
 		<h3 class="f3 mv3">{{ i18n "whatsInThis" }}</h3>
 
 		{{ .TableOfContents }}
 
-	</div>
+	</aside>
 {{- end -}}
 
 {{/*
@@ -28,6 +28,26 @@
 
 		<div class="pa0 ma0 list">
 		{{ range first 5 . }}
+			{{ partial "summary-mini.html" . }}
+		{{ end }}
+		</div>
+
+	</aside>
+{{ end }}
+
+
+
+{{ range $key, $value := .Site.Taxonomies.store }}
+	<aside class="mb5">
+
+		{{- with ( $.Site.GetPage ( printf "/store/%s" $key ) ) -}}
+		<h3 class="f3 mv3">
+			<a href="{{ .Permalink }}">{{ .Title | title }}</a>
+		</h3>
+		{{- end -}}
+
+		<div class="pa0 ma0 list">
+		{{ range first 5 $value.Pages }}
 			{{ partial "summary-mini.html" . }}
 		{{ end }}
 		</div>

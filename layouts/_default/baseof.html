@@ -43,7 +43,7 @@
 		{{- template "_internal/twitter_cards.html" . -}}
 
 		{{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
-			{{ with .Site.Params.fathomAnalytics }}
+			{{ with .Site.Params.fathom_analytics }}
 				<script src="https://cdn.usefathom.com/script.js" data-site="{{ . }}" defer></script>
 			{{ end }}
 		{{ end }}

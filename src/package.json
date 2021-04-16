@@ -1,10 +1,10 @@
 {
-  "name": "gohugo-default-styles",
+  "name": "gohugo-boss-styles",
   "version": "1.0.0",
-  "description": "Default Theme for Hugo Sites",
+  "description": "Boss Theme for Hugo Sites",
   "main": "index.js",
   "repository": "",
-  "author": "budparr",
+  "author": "binarymoon",
   "license": "MIT",
   "scripts": {
     "build:production": "rm -rf ../static/dist && webpack -p",

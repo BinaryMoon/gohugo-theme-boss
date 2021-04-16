@@ -1,29 +1,29 @@
 {{ define "main" }}
 
-	<article class="pa3 pa4-ns nested-copy-line-height nested-img">
+<article class="pa3 pa4-ns nested-copy-line-height nested-img">
 
-		<nav class="ph5-l measure-wide lh-copy">
-			{{ range $key, $pages := .Site.Taxonomies.store }}
-			{{- with ( $.Site.GetPage ( printf "/store/%s" $key ) ) -}}
-			<a href="{{ .Permalink }}" class="mr3">{{ .Title | title }}</a>
-			{{ end }}
-			{{ end }}
-		</nav>
-
-		{{ with .Content }}
-		<section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray">
-			{{ . }}
-		</section>
+	{{ if eq "store" .Type }}
+	<nav class="ph5-l lh-copy tc">
+		{{ range $key, $pages := .Site.Taxonomies.store }}
+		{{- with ( $.Site.GetPage ( printf "/store/%s" $key ) ) -}}
+		<a href="{{ .Permalink }}" class="mh3">{{ .Title | title }}</a>
 		{{ end }}
+		{{ end }}
+	</nav>
+	{{ end }}
 
-		<section class="grid grid-c3 grid-gg2px mh4-l mv5-l mv2 mh1">
-			{{ range .Paginator.Pages }}
-				{{- partial "summary.html" . -}}
-			{{ end }}
-		</section>
+	{{ with .Content }}
+	<section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray">
+		{{ . }}
+	</section>
+	{{ end }}
 
-		{{- template "_internal/pagination.html" . -}}
+	<section class="grid grid-c3 grid-gg2px mh4-l mv5-l mv3 mh1">
+		{{ range .Paginator.Pages }} {{- partial "summary.html" . -}} {{ end }}
+	</section>
 
-	</article>
+	{{- template "_internal/pagination.html" . -}}
+
+</article>
 
 {{ end }}

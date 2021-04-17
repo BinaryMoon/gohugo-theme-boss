@@ -9,14 +9,16 @@
 
 		<header class="mt5 mb4 w-100">
 
-			{{ if .Params.shop }}
-			{{ $category := index (.Params.shop) 0 }}
+			{{ if .Params.store }}
+			{{ $category := index (.Params.store) 0 -}}
 			<p class="fw7 tracked ttu f7 mb4">
-				<a href="{{ "/shop/" | relLangURL }}{{ $category | urlize }}/">{{ $category }}</a>
-				<span class="o-30 mh1">></span>
+				<a href="/store/">Store</a>
+				<span class="o-30 mh1" role="separator">></span>
+				<a href="{{ "/store/" | relLangURL }}{{ $category | urlize }}/">{{ $category }}</a>
+				<span class="o-30 mh1" role="separator">></span>
 				{{ .Title }}
 			</p>
-			{{ end }}
+			{{- end }}
 
 			<h1 class="f1 mt3 mb1">
 				{{- .Title | title -}}

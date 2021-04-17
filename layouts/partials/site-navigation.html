@@ -7,16 +7,16 @@
 			{{ with .Site.Params.site_logo }}
 				<img src="{{ . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
 			{{ else }}
-				{{ .Site.Title }}
+				{{- .Site.Title -}}
 			{{ end }}
 		</a>
 
 		<!-- Nav -->
 		<nav class="flex-l items-center" aria-label="Primary Menu">
 
-			{{ partial "i18nlist.html" . }}
+			{{- partial "i18nlist.html" . -}}
 
-			{{ if .Site.Menus.main }}
+			{{- if .Site.Menus.main -}}
 			<ul class="pl0 mr3">
 				{{ range .Site.Menus.main }}
 				<li class="list f5 f4-ns fw4 dib pr3">
@@ -26,9 +26,9 @@
 				</li>
 				{{ end }}
 			</ul>
-			{{ end }}
+			{{- end -}}
 
-			{{ partialCached "social-follow.html" . }}
+			{{- partialCached "social-follow.html" . }}
 
 		</nav>
 

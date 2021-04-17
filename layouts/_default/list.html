@@ -4,12 +4,10 @@
 
 <article class="pa3 pa4-ns nested-copy-line-height nested-img">
 
-	{{ if eq "store" .Type }}
+	{{ with ( index .Site.Params.subnav .Params.subnav ) }}
 	<nav class="ph5-l lh-copy tc">
-		{{ range $key, $pages := .Site.Taxonomies.store }}
-		{{- with ( $.Site.GetPage ( printf "/store/%s" $key ) ) -}}
-		<a href="{{ .Permalink }}" class="mh3">{{ .Title | title }}</a>
-		{{ end }}
+		{{ range $key, $link := . }}
+		<a href="{{ index $link 0 }}" class="mh3">{{ index $link 1 | title }}</a>
 		{{ end }}
 	</nav>
 	{{ end }}

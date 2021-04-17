@@ -16,6 +16,10 @@
 
 	<h1 class="f3 mb1 mt0">
 		<a href="{{ .Permalink }}" class="link black">{{ .Title | title }}</a>
+		{{ if eq .Type "categories" }}
+		{{ $taxonomy := ( index .Site.Taxonomies.categories ( urlize .Title ) ) }}
+		<small class="f5 o-60">({{ $taxonomy.Count }})</small>
+		{{ end }}
 	</h1>
 
 	{{ if .Date }}

@@ -35,12 +35,9 @@
 				{{ end }}
 			</section>
 
-			{{/* As above, Use $section_name to get the section title, and URL. Use "with" to only show it if it exists */}}
-			{{ with .Site.GetPage "section" $section_name }}
-			<a href="{{ .Permalink }}" class="link db f5 ph4 pv3 br3 mt4 mb5 {{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }} fw7 tc ttu tracked-mega">
+			<a href="/categories/" class="link db f5 ph4 pv3 br3 mt4 mb5 {{ .Site.Params.feature_colors_dark | default "bg-green hover-bg-green white hover-white" }} fw7 tc ttu tracked-mega">
 				{{ i18n "more" . }}
 			</a>
-			{{ end }}
 
 		</div>
 

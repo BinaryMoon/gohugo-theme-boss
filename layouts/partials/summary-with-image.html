@@ -24,7 +24,7 @@
 			{{- .Date.Format "January 2, 2006" -}}
 		</time>
 
-		<div class="f6 f5-l lh-copy nested-copy-line-height nested-links {{ .Site.Params.font_content | default "georgia" }}">
+		<div class="f6 f5-l lh-copy nested-copy-line-height {{ .Site.Params.font_content | default "georgia" }}">
 			{{ .Summary | truncate 350 }}
 		</div>
 

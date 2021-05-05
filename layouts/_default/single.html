@@ -5,7 +5,8 @@
 
 {{ define "main" }}
 	{{ $section := .Site.GetPage "section" .Section }}
-	<article class="flex-l flex-wrap justify-between w-80-l center ph4">
+	<article class="flex-l flex-wrap justify-between w-80-l center ph4
+		{{ if .Params.recipe }}h-recipe{{ end }}">
 
 		<header class="mt5 mb4 w-100">
 
@@ -18,7 +19,7 @@
 			</p>
 			{{ end }}
 
-			<h1 class="f1 mt3 mb1">
+			<h1 class="f1 mt3 mb1 p-name">
 				{{- .Title | title -}}
 			</h1>
 			{{ partial "meta.html" . }}
@@ -38,11 +39,13 @@
 
 		</header>
 
-		<div class="lh-copy {{ $.Param "post_content_classes" }} f4 nested-img mid-gray bg-white pa4 w-two-thirds-l">
+		<div class="lh-copy
+			{{ $.Param "post_content_classes" }}
+			{{ .Site.Params.font_content | default "georgia" }}
+			f4 nested-img mid-gray bg-white pa4 w-two-thirds-l">
 
-			<div class="{{ .Site.Params.font_content | default "georgia" }}">
-				{{- .Content -}}
-			</div>
+			{{- .Content -}}
+
 			{{ if .Params.recipe }}
 				{{- partial "recipe.html" . -}}
 			{{ end }}

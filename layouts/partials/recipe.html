@@ -1,0 +1,30 @@
+{{ with .Params.recipe }}
+
+	<h2 id="ingredients">Ingredients {{- if .servings }}(serves <data class="p-yield" value="{{ .servings }}">{{ .servings }}</data>){{ end }}</h2>
+
+	<ul>
+		{{- range .ingredients }}
+		<li class="p-ingredient">{{ . }}</li>
+		{{ end -}}
+	</ul>
+
+	<h2 id="instructions">Instructions</h2>
+
+	<ol class="e-instructions">
+		{{- range .instructions }}
+		<li>{{ . }}</li>
+		{{ end -}}
+	</ol>
+
+	{{ if .tips }}
+	<h2 id="tips">Tips and Changes</h2>
+
+	<ul>
+		{{- range .tips }}
+		<li>{{ . }}</li>
+		{{ end -}}
+	</ul>
+	{{ end }}
+
+
+{{ end }}

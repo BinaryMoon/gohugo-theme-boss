@@ -43,6 +43,9 @@
 			<div class="{{ .Site.Params.font_content | default "georgia" }}">
 				{{- .Content -}}
 			</div>
+			{{ if .Params.recipe }}
+				{{- partial "recipe.html" . -}}
+			{{ end }}
 
 			<aside class="instapaper_ignoref tracked mt5">
 				<h5 class="b">Share</h5>

@@ -1,6 +1,6 @@
-
+{{ with .Params }}
 <ul class="pa0">
-	{{ range .Params.tags }}
+	{{ range .tags }}
 		<li class="dib">
 			<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="link underline mr2 dib">
 				{{- . | title -}}
@@ -8,3 +8,4 @@
 		</li>
 	{{ end }}
 </ul>
+{{ end }}

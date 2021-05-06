@@ -24,9 +24,9 @@
 			"name": "Veggie Advisor"
 		},
 		"name": "{{ $.Page.Title }}",
-		{{ if .cookTime }}cookTime: "PT{{ .cookTime }}M",{{ end }}
-		{{ if .prepTime }}prepTime: "PT{{ .prepTime }}M",{{ end }}
-		{{ if .totalTime }}totalTime: "PT{{ .totalTime }}M",{{ end }}
+		{{ if .cookTime }}"cookTime": "PT{{ .cookTime }}M",{{ end }}
+		{{ if .prepTime }}"prepTime": "PT{{ .prepTime }}M",{{ end }}
+		{{ if .totalTime }}"totalTime": "PT{{ .totalTime }}M",{{ end }}
 		"recipeCuisine": "Vegetarian",
 		"image": [
 			"{{ $image1.RelPermalink | absURL }}",

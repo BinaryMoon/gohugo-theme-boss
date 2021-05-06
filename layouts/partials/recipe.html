@@ -51,13 +51,41 @@
 	}
 </script>
 
-	<h2 id="ingredients">Ingredients {{- if .servings }} (serves <data class="p-yield" value="{{ .servings }}">{{ .servings }}</data>){{ end }}</h2>
+	<h2 id="ingredients">
+		Ingredients
+		{{- if .servings }} (serves <data class="p-yield" value="{{ .servings }}">{{ .servings }}</data>){{ end }}
+		{{- if .makes }} (makes <data class="p-yield" value="{{ .makes }}">{{ .makes }} portions</data>){{ end }}
+	</h2>
+
+	{{ with .ingredients_image }}
+		{{ partial "image.html" . }}
+	{{ end }}
 
 	<ul>
 		{{- range .ingredients }}
 		<li class="p-ingredient">{{ . }}</li>
 		{{ end -}}
 	</ul>
+
+	{{ with .equipment_image }}
+		{{ partial "image.html" . }}
+	{{ end }}
+
+	{{ if .equipment }}
+
+	<h2 id="equipment">Equipment</h2>
+
+	<ul>
+		{{- range .equipment }}
+		<li>{{ . }}</li>
+		{{ end -}}
+	</ul>
+
+	{{ end }}
+
+	{{ with .instructions_image }}
+		{{ partial "image.html" . }}
+	{{ end }}
 
 	<h2 id="instructions">Instructions</h2>
 
@@ -66,6 +94,10 @@
 		<li>{{ . }}</li>
 		{{ end -}}
 	</ol>
+
+	{{ with .tips_image }}
+		{{ partial "image.html" . }}
+	{{ end }}
 
 	{{ if .tips }}
 	<h2 id="tips">Tips</h2>

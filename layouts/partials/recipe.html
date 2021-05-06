@@ -1,10 +1,38 @@
 {{ with .Params.recipe }}
 
+	{{- $image1 := "" }}
+	{{- $image2 := "" }}
+	{{- $image3 := "" }}
+
+	{{- $featured_image := $.Page.Param "featured_image"}}
+	{{- if $featured_image }}
+
+		{{- $featured_image := (trim $featured_image "/") }}
+		{{ $image := resources.Get $featured_image }}
+		{{ $image1 = $image.Fill "400x400" }}
+		{{ $image2 = $image.Fill "500x375" }}
+		{{- $image3 = $image.Fill "560x315" }}
+
+	{{- end -}}
+
 <script type="application/ld+json">
 	{
 		"@context": "https://schema.org/",
 		"@type": "Recipe",
+		"author": {
+			"@type": "Organisation",
+			"name": "Veggie Advisor"
+		},
 		"name": "{{ $.Page.Title }}",
+		{{ if .cookTime }}cookTime: "PT{{ .cookTime }}M",{{ end }}
+		{{ if .prepTime }}prepTime: "PT{{ .prepTime }}M",{{ end }}
+		{{ if .totalTime }}totalTime: "PT{{ .totalTime }}M",{{ end }}
+		"recipeCuisine": "Vegetarian",
+		"image": [
+			"{{ $image1.RelPermalink | absURL }}",
+			"{{ $image2.RelPermalink | absURL }}",
+			"{{ $image3.RelPermalink | absURL }}"
+		],
 		{{ if .servings }}"recipeYield": "{{ .servings }}",{{ end }}
 		"recipeIngredient": [
 		{{ range .ingredients -}}

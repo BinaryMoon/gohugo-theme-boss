@@ -1,0 +1,38 @@
+{{ $image := .src }}
+{{ $image := (trim $image "/") }}
+{{ $image_obj := resources.Get $image }}
+{{ $data := newScratch }}
+
+{{ if $image_obj }}
+	{{ $data.Add "image" ( $image_obj.Resize "700x" ) }}
+	{{ $data.Add "heading_class" "f5 mv2" }}
+	{{ $data.Add "class" "mb4" }}
+
+	{{ $align := .align }}
+	{{ if ( eq $align "left" ) }}
+		{{ $data.Set "class" "w-40 fl mr4 mb3" }}
+		{{ $data.Set "image" ( $image_obj.Resize "400x" ) }}
+		{{ $data.Set "heading_class" "f7 mv1" }}
+	{{ end }}
+	{{ if ( eq $align "right" ) }}
+		{{ $data.Set "class" "w-40 fr ml4 mb3" }}
+		{{ $data.Set "image" ( $image_obj.Resize "400x" ) }}
+		{{ $data.Set "heading_class" "f7 mv1" }}
+	{{ end }}
+
+	{{ $image_obj := $data.Get "image" }}
+
+<figure class="image ma0 {{ $data.Get "class" }}">
+	<img
+		loading="lazy"
+		src="{{ $image_obj.RelPermalink }}"
+		{{ with .alt }}alt="{{.}}"{{ end }}
+	/>
+	{{ if .caption }}
+	<figcaption>
+		<h4 class="tc mh0 {{ $data.Get "heading_class" }}">{{ .caption }}</h4>
+	</figcaption>
+	{{ end }}
+</figure>
+
+{{ end }}

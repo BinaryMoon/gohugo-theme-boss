@@ -3,6 +3,7 @@
 {{ $image_obj := resources.Get $image }}
 
 {{ if $image_obj }}
+
 	{{ $.Scratch.Add "image" ( $image_obj.Resize "700x" ) }}
 	{{ $.Scratch.Add "heading_class" "f5 mv2" }}
 	{{ $.Scratch.Add "class" "mb4" }}
